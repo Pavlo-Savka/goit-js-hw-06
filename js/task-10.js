@@ -7,9 +7,13 @@ const createBtn = document.querySelector('button[data-create]');
 const destroyBtn = document.querySelector('button[data-destroy]');
 const createBoxes = (amount) => {
   for (amount = 1; amount <= (number.value); amount += 1) {
-    boxes.insertAdjacentHTML("beforeend", '<div class = box_${amount}></div>');
-const box_${amount} = document.querySelector(.box_${amount})
-    box_${amount}.style.backgroundColor = getRandomHexColor();
+    const boxNum = 'box_' + amount;
+    boxes.insertAdjacentHTML("beforeend", '<div class = ' + boxNum + '></div>');
+    const boxClass = document.querySelector('.' + boxNum);
+    boxClass.style.backgroundColor = getRandomHexColor();
+    boxClass.style.width = 20 + 10 * amount + 'px';
+    boxClass.style.height = 20 + 10 * amount + 'px';
+    console.log(boxClass); 
   }
 }
 const destroyBoxes = () => {
@@ -17,4 +21,3 @@ const destroyBoxes = () => {
 }
 createBtn.addEventListener("click", createBoxes);
 destroyBtn.addEventListener("click", destroyBoxes);
-
